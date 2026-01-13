@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Khoá TOEIC - Lớp Anh thầy Kết</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background-color: #fff8f0;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+header {
+  background-color: #ffd6ba;
+  padding: 15px 20px;
+  font-weight: bold;
+  color: #7a4e3e;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.header-left a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 22px;
+  color: #7a4e3e;
+  text-decoration: none;
+}
+.header-left a i { font-size: 24px; }
+.header-center { font-size: 28px; font-weight: bold; }
+.top-select { display: flex; justify-content: flex-start; margin: 20px 40px; }
+select {
+  padding: 8px 14px;
+  font-size: 18px;
+  border-radius: 8px;
+  border: 2px solid #a0e7e5;
+  background-color: #e3fdfd;
+}
+.exercise {
+  width: 85%;
+  margin: 20px auto;
+  text-align: left;
+  font-size: 22px;
+}
+.question-box, .note-box, .option-note {
+  width: 100%;
+  border: 2px solid #a0e7e5;
+  border-radius: 8px;
+  padding: 10px;
+  margin: 10px 0;
+  font-size: 20px;
+  background-color: #e3fdfd;
+  resize: vertical;
+}
+.question-box { min-height: 60px; }
+.note-box, .option-note { min-height: 50px; }
+.option-row {
+  display: flex;
+  align-items: center;
+  margin: 8px 0;
+}
+.option-row input[type="radio"] {
+  margin-right: 12px;
+  transform: scale(1.3);
+}
+.option-label {
+  flex: 0 0 auto;
+  margin-right: 15px;
+}
+.exercise-buttons {
+  margin-top: 15px;
+}
+.exercise-buttons button {
+  padding: 10px 18px;
+  font-size: 20px;
+  border-radius: 8px;
+  border: none;
+  margin-right: 15px;
+  cursor: pointer;
+  background-color: #a0e7e5;
+}
+.exercise-buttons button:hover { background-color: #ffb3ba; }
+
+.result {
+  font-weight: bold;
+  font-size: 20px;
+  margin-top: 10px;
+}
+.confetti {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 10px;
+  height: 10px;
+  opacity: .9;
+  animation: pop .9s ease-out forwards;
+}
+@keyframes pop {
+  0% { transform: translate(0,0) scale(1); opacity:1;}
+  50% {transform: translate(calc(var(--x)*.5),calc(var(--y)*.4)) scale(1.1);opacity:1;}
+  100% {transform: translate(var(--x),var(--y)) scale(.5);opacity:0;}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-left">
+    <a href="https://ketng91.github.io/lopanhthayket/">
+      <i class="fa-solid fa-house"></i> Lớp Anh thầy Kết
+    </a>
+  </div>
+  <div class="header-center">TOEIC Practice</div>
+</header>
+
+<div class="top-select">
+  <select id="exerciseList">
+    <option value="1">TOEIC Part 5</option>
+  </select>
+</div>
+
+<div class="exercise" id="exercise"></div>
+
+<footer>Chúc mừng bạn đã hoàn thành bài học!</footer>
+
+<script>
+// Dữ liệu mẫu TOEIC
+const exercises = {
+  1: [
+    {
+      q: "Ms. Morgan recruited the individuals that the company _____ for the next three months.",
+      options: ["will employ", "to employ", "has been employed", "employ"],
+      correct: 0, // index
+      explain: "Chọn 'will employ' vì câu nói về tương lai: 'the company will employ'."
+    },
+    {
+      q: "The manager requested that all reports _____ by Friday.",
+      options: ["is submitted", "be submitted", "submitted", "submitting"],
+      correct: 1,
+      explain: "Trong mệnh đề sau 'requested that', dùng subjunctive 'be submitted'."
+    }
+  ]
+};
+
+let currIndex = 0;
+
+// Load câu hỏi
+function loadQuestion(){
+  const box = document.getElementById("exercise");
+  if(currIndex >= exercises[1].length){
+    box.innerHTML = "<div style='font-size:24px; font-weight:bold;'>🎉 Bạn đã hoàn thành tất cả câu hỏi!</div>";
+    return;
+  }
+  const ex = exercises[1][currIndex];
+  let html = `
+    <div class="question-box">${ex.q}</div>
+    <textarea class="note-box"></textarea>
+  `;
+  ex.options.forEach((opt,i)=>{
+    html += `
+      <div class="option-row">
+        <input type="radio" name="opt" id="opt${i}" value="${i}">
+        <label class="option-label" for="opt${i}">${String.fromCharCode(65+i)}. ${opt}</label>
+        <textarea class="option-note"></textarea>
+      </div>
+    `;
+  });
+  html += `<textarea class="note-box"></textarea>`;
+  html += `
+    <div class="exercise-buttons">
+      <button onclick="checkAnswer()">Check</button>
+      <button onclick="nextQuestion()">Next</button>
+    </div>
+    <div id="result" class="result"></div>
+  `;
+  box.innerHTML = html;
+}
+
+// Check đáp án
+function checkAnswer(){
+  const ex = exercises[1][currIndex];
+  const radios = document.getElementsByName("opt");
+  let selected = -1;
+  radios.forEach(r=>{ if(r.checked) selected = parseInt(r.value); });
+  const resBox = document.getElementById("result");
+  if(selected===ex.correct){
+    resBox.style.color = "#28a745";
+    resBox.innerHTML = "✔ Correct";
+    firework();
+  } else {
+    resBox.style.color = "#C5705D";
+    resBox.innerHTML = `✘ Sai. Đáp án đúng: ${String.fromCharCode(65+ex.correct)}. ${ex.options[ex.correct]}<br>${ex.explain}`;
+  }
+}
+
+// Next
+function nextQuestion(){
+  currIndex++;
+  loadQuestion();
+}
+
+// Firework
+function firework(){
+  for(let i=0;i<25;i++){
+    const c=document.createElement("div");
+    c.className="confetti";
+    c.style.setProperty("--x",(Math.random()-.5)*600+"px");
+    c.style.setProperty("--y",(Math.random()-.5)*600+"px");
+    c.style.backgroundColor=`hsl(${Math.random()*360},90%,60%)`;
+    document.body.appendChild(c);
+    setTimeout(()=>c.remove(),900);
+  }
+}
+
+loadQuestion();
+</script>
+
+</body>
+</html>
