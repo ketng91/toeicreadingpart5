@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Khoá TOEIC - Lớp Anh thầy Kết</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
 <style>
 body {
   font-family: Arial, sans-serif;
@@ -24,165 +23,94 @@ header {
   justify-content: center;
   position: relative;
 }
-
-.header-left {
-  position: absolute;
-  left: 20px;
-}
-
+.header-left { position: absolute; left: 20px; }
 .header-left a {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 18px;
-  color: #7a4e3e;
-  text-decoration: none;
+  display: flex; align-items: center; gap: 8px;
+  font-size: 18px; color: #7a4e3e; text-decoration: none;
 }
 .header-left a i { font-size: 18px; }
 .header-center { font-size: 22px; font-weight: bold; }
-
-.top-select {
-  display: flex;
-  justify-content: flex-start;
-  margin: 20px;
-  width: 100%;
-}
+.top-select { display: flex; justify-content: flex-start; margin: 20px; width: 100%; }
 select {
-  padding: 8px 14px;
-  font-size: 18px;
-  border-radius: 8px;
-  border: 2px solid #a0e7e5;
+  padding: 8px 14px; font-size: 18px;
+  border-radius: 8px; border: 2px solid #a0e7e5;
   background-color: #e3fdfd;
 }
-
-#timerBox {
-  margin: -10px auto 5px auto;
-  font-size: 24px;
-  text-align: center;
-}
+#timerBox { margin: -10px auto 5px auto; font-size: 24px; text-align: center; }
 #timerBox button {
-  margin-left: 10px;
-  padding: 6px 12px;
-  font-size: 18px;
-  border-radius: 8px;
-  border: none;
-  cursor: pointer;
-  background-color: #a0e7e5;
+  margin-left: 10px; padding: 6px 12px; font-size: 18px;
+  border-radius: 8px; border: none; cursor: pointer; background-color: #a0e7e5;
 }
 #timerBox button:hover { background-color: #ffb3ba; }
-
-.exercise {
-  width: 70%;
-  margin: 20px auto;
-  text-align: left;
-  font-size: 22px;
-}
-
+.exercise { width: 70%; margin: 20px auto; text-align: left; font-size: 22px; }
 @media (max-width: 768px) {
-  .exercise {
-    width: 100%;
-    margin: 20px auto;
-    box-sizing: border-box;
-  }
+  .exercise { width: 100%; margin: 20px auto; box-sizing: border-box; }
 }
 @media (max-width: 600px) {
-  header {
-    flex-direction: column;
-    padding: 10px;
-  }
-
-  .header-left {
-    position: static;
-    margin-bottom: 6px;
-  }
-
-  .header-center {
-    text-align: center;
-    margin-top: 4px;
-  }
+  header { flex-direction: column; padding: 10px; }
+  .header-left { position: static; margin-bottom: 6px; }
+  .header-center { text-align: center; margin-top: 4px; }
 }
-
-body, html {
-  overflow-x: hidden;
-}
-
-
-
+body, html { overflow-x: hidden; }
 .question-box {
-  width: 100%;
-  min-height: 60px;
-  border: 2px solid #a0e7e5;
-  border-radius: 8px;
-  padding: 10px;
-  margin: 10px 0;
-  font-size: 24px;
-  font-weight: bold;
-  background-color: #e3fdfd;
-  resize: vertical;
+  width: 100%; min-height: 60px; border: 2px solid #a0e7e5;
+  border-radius: 8px; padding: 10px; margin: 10px 0;
+  font-size: 24px; font-weight: bold; background-color: #e3fdfd;
 }
-.note-box {
-  width: 100%;
-  min-height: 50px;
-  border-radius: 8px;
-  padding: 10px;
-  margin: 10px 0;
-  font-size: 20px;
-  font-family: 'Arial', sans-serif;
-  color: #FF0000;
-  background-color: #D9E9CF;
-  resize: vertical;
+.option-row { 
+  display: flex; 
+  align-items: flex-start;   /* ← thay đổi để textarea không bị lệch */
+  margin: 12px 0; 
+  gap: 12px;
 }
-.option-row {
-  display: flex;
-  align-items: center;
-  margin: 8px 0;
+.option-row input[type="radio"] { 
+  margin-top: 6px;
+  transform: scale(1.3); 
 }
-.option-row input[type="radio"] {
-  margin-right: 12px;
-  transform: scale(1.3);
-}
-.option-label {
-  flex: 0 0 auto;
-  margin-right: 15px;
-}
-.option-note {
+.option-row label {
   flex: 1;
-  margin-left: 15px;
-  min-height: 20px;
-  max-height: 30px;
-  border: 1px solid #a0e7e5;
+  padding-top: 3px;
+}
+.note-small {
+  width: 600px;
+  min-height: 38px;
+  padding: 6px 10px;
+  font-size: 20px;
+  color: #FF0000;               /* đỏ đậm hơn chút cho dễ đọc */
+  background-color: #F1F3E0;     /* xanh lá rất nhạt */
+  border: 1px solid #b3e6b3;
   border-radius: 6px;
-  padding: 5px;
-  color: #4B70F5;
-  background-color: #F1F3E0;
-  font-size: 20px;
-  font-family: 'Arial', sans-serif;
   resize: vertical;
+  font-family: Arial, sans-serif;
+  box-sizing: border-box;
 }
-
-.exercise-buttons {
-  margin-top: 15px;
-}
+.result { font-weight: bold; font-size: 20px; margin-top: 10px; }
+.exercise-buttons { margin: 20px 0 12px 0; }
 .exercise-buttons button {
-  padding: 10px 18px;
-  font-size: 20px;
-  border-radius: 8px;
-  border: none;
-  margin-right: 15px;
-  cursor: pointer;
-  background-color: #a0e7e5;
+  padding: 10px 18px; font-size: 20px;
+  border-radius: 8px; border: none; margin-right: 15px;
+  cursor: pointer; background-color: #a0e7e5;
 }
 .exercise-buttons button:hover { background-color: #ffb3ba; }
 
-.result {
-  font-weight: bold;
+/* Textarea lớn ở dưới cùng - cùng kích cỡ với question-box */
+.note-large {
+  width: 72%;
+  min-height: 100px;            /* to & rộng như question box */
+  padding: 12px;
   font-size: 20px;
-  margin-top: 10px;
+  color: #FF0000;
+  background-color: #D9E9CF;
+  border: 2px solid #b3e6b3;
+  border-radius: 8px;
+  resize: vertical;
+  margin-top: 25px;
+  font-family: Arial, sans-serif;
+  box-sizing: border-box;
 }
 </style>
 </head>
 <body>
-
 <header>
   <div class="header-left">
     <a href="https://ketng91.github.io/lopanhthayket/">
@@ -191,163 +119,34 @@ body, html {
   </div>
   <div class="header-center">TOEIC Practice</div>
 </header>
-
 <div class="top-select">
   <select id="exerciseList">
-    <option>TOEIC Part 5 - Test 1</option>
-    <option>TOEIC Part 5 - Test 2</option>
-    <option>TOEIC Part 5 - Test 3</option>
-    <option>TOEIC Part 5 - Test 4</option>
-    <option>TOEIC Part 5 - Test 5</option>
-    <option>TOEIC Part 5 - Test 6</option>
-    <option>TOEIC Part 5 - Test 7</option>
-    <option>TOEIC Part 5 - Test 8</option>
-    <option>TOEIC Part 5 - Test 9</option>
-    <option>TOEIC Part 5 - Test 10</option>
+    <option value="1">TOEIC Part 5 - Test 1</option>
+    <option value="2">TOEIC Part 5 - Test 2</option>
+    <option value="3">TOEIC Part 5 - Test 3</option>
+    <option value="4">TOEIC Part 5 - Test 4</option>
   </select>
 </div>
-
-<!-- ĐỒNG HỒ -->
 <div id="timerBox">
   <span id="timer">00:00:00</span>
   <button onclick="startTimer()">Start</button>
   <button onclick="resetTimer()">Reset</button>
 </div>
-
 <div class="exercise" id="exercise"></div>
+
+<!-- Textarea lớn đặt ngoài khối question để luôn hiển thị ở dưới cùng -->
+<textarea class="note-large" placeholder="Ghi chú chung cho toàn bài / phần này..."></textarea>
 
 <footer>Chăm chỉ thì đậu!</footer>
 
-<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
-
-<script>
-// TIMER
-let timerInterval = null;
-let secondsPassed = 0;
-
-function formatTime(s) {
-  const h = Math.floor(s / 3600);
-  const m = Math.floor((s % 3600) / 60);
-  const sec = s % 60;
-  return [
-    h.toString().padStart(2,'0'),
-    m.toString().padStart(2,'0'),
-    sec.toString().padStart(2,'0')
-  ].join(':');
-}
-
-function startTimer() {
-  if (timerInterval) return;
-  timerInterval = setInterval(() => {
-    secondsPassed++;
-    document.getElementById("timer").textContent = formatTime(secondsPassed);
-  }, 1000);
-}
-
-function resetTimer() {
-  clearInterval(timerInterval);
-  timerInterval = null;
-  secondsPassed = 0;
-  document.getElementById("timer").textContent = "00:00:00";
-}
-
-// ⭐⭐ Pháo hoa giữa màn hình thật to ⭐⭐
-function fireConfetti() {
-  confetti({
-    particleCount: 250,
-    spread: 140,
-    startVelocity: 45,
-    origin: { x: 0.5, y: 0.5 },   // giữa màn hình
-    gravity: 1.0
-  });
-}
-
-
-// TODO: Câu hỏi sẽ load ở đây
-// Load bài đầu tiên
-loadExercise(1);
-
-// Khi chọn bộ bài
-document.getElementById("exerciseList").addEventListener("change", function () {
-  loadExercise(this.selectedIndex + 1);
-});
-
-// Hàm load bài
-function loadExercise(testNumber) {
-  const data = exercises[testNumber];
-  let html = "";
-
-  data.forEach((qObj, index) => {
-    html += `
-      <div class="question-block">
-        <div class="question-box">${qObj.q}</div>
-
-        ${qObj.options
-          .map(
-            (opt, i) => `
-            <div class="option-row">
-              <input type="radio" name="q${index}" value="${i}">
-              <label>${opt}</label>
-              <div class="option-note"></div>
-            </div>`
-          )
-          .join("")}
-
-        <div class="result" id="result${index}"></div>
-      </div>
-    `;
-  });
-
-  html += `<button onclick="checkAnswers(${testNumber})">Submit</button>`;
-  document.getElementById("exercise").innerHTML = html;
-}
-
-// Kiểm tra đáp án (🔥 chỗ gọi CONFETTI ở đây)
-function checkAnswers(testNumber) {
-  const data = exercises[testNumber];
-  let anyCorrect = false;
-
-  data.forEach((qObj, index) => {
-    const checked = document.querySelector(`input[name="q${index}"]:checked`);
-    const resultDiv = document.getElementById(`result${index}`);
-
-    if (!checked) {
-      resultDiv.textContent = "Chưa chọn đáp án!";
-      resultDiv.style.color = "orange";
-      return;
-    }
-
-    const selected = Number(checked.value);
-
-    if (selected === qObj.correct) {
-      resultDiv.textContent = "Correct!";
-      resultDiv.style.color = "green";
-      anyCorrect = true;
-    } else {
-      resultDiv.textContent = "Incorrect!";
-      resultDiv.style.color = "red";
-    }
-  });
-
-  // Nếu có ít nhất 1 câu đúng thì nổ pháo giữa màn hình
-  if (anyCorrect) fireConfetti();
-}
-
-</script>
-
+<!-- ⭐⭐ PHẢI ĐỂ CONFETTI TRƯỚC CODE ⭐⭐ -->
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
 <script>
-// toàn bộ JS của bạn ở dưới dòng này
-</script>
-
-</body>
-</html>
-
-<script>
-// Dữ liệu mẫu TOEIC
+// ===== 1. exercises =====
 const exercises = {
+/* TEST 1*/
   1: [
 {
     q: "101. Sophia Hollinger was commended for ------ work on the Kala account.",
@@ -530,81 +329,301 @@ const exercises = {
     correct: 1,
     explain: "Cấu trúc 'be named + position' (được bổ nhiệm vào vị trí nào đó)."
   }
+  ],
+
+/* TEST 2*/
+  2: [
+{
+    q: "101. Our ------ indicate that your company car is due for regular service next month.",
+    options: ["records", "recording", "recorded", "recordable"],
+    correct: 0,
+    explain: "Dùng danh từ số nhiều 'records' (hồ sơ/sổ sách) làm chủ ngữ cho động từ 'indicate'."
+  },
+  {
+    q: "102. The ------ entrance to our office building will be closed on Tuesday because of construction.",
+    options: ["main", "next", "sure", "early"],
+    correct: 0,
+    explain: "Cụm từ 'main entrance' (lối vào chính) là cách kết hợp từ tự nhiên nhất trong ngữ cảnh này."
+  },
+  {
+    q: "103. Any document marked “Confidential” must be handled and stored ------.",
+    options: ["carefully", "careful", "carefulness", "more careful"],
+    correct: 0,
+    explain: "Sử dụng trạng từ 'carefully' (một cách cẩn thận) để bổ nghĩa cho các động từ 'handled' và 'stored'."
+  },
+  {
+    q: "104. The new technology ------ trains to switch quickly between electric and diesel modes.",
+    options: ["allows", "rides", "forms", "conducts"],
+    correct: 0,
+    explain: "Cấu trúc 'allow something/someone to do something' (cho phép cái gì làm gì)."
+  },
+  {
+    q: "105. The Chocobonne Corporation says it plans to open 28 new ------ in the next three years.",
+    options: ["stores", "storing", "store", "storage"],
+    correct: 0,
+    explain: "Sau số đếm '28' và tính từ 'new' cần một danh từ số nhiều đếm được: 'stores' (cửa hàng)."
+  },
+  {
+    q: "106. The Lofstrom Shopping Center is ------ new tenants to rent vacant retail space.",
+    options: ["seeking", "growing", "facing", "relating"],
+    correct: 0,
+    explain: "Dựa vào nghĩa: 'seeking' (tìm kiếm) khách thuê mới cho mặt bằng trống."
+  },
+  {
+    q: "107. The painter Marion Settimi developed ------ distinctive style during the years she lived in Indonesia.",
+    options: ["her", "herself", "hers", "she"],
+    correct: 0,
+    explain: "Dùng tính từ sở hữu 'her' đứng trước cụm danh từ 'distinctive style'."
+  },
+  {
+    q: "108. The company picnic at Floral Park will begin at noon on Saturday and end ------ 4:00 P.M.",
+    options: ["around", "until", "outside", "within"],
+    correct: 0,
+    explain: "Dùng 'around' (vào khoảng) để chỉ thời gian kết thúc ước chừng."
+  },
+{
+    q: "109. Last Monday, the department ------ Mr. Okada’s recent promotion to manager.",
+    options: ["celebrated", "will be celebrating", "is celebrating", "celebrates"],
+    correct: 0,
+    explain: "Dấu hiệu 'Last Monday' cho thấy hành động đã xảy ra trong quá khứ, dùng thì quá khứ đơn 'celebrated'."
+  },
+  {
+    q: "110. Ms. Xuan’s ------ for reducing the company’s energy consumption is worth considering.",
+    options: ["proposal", "revision", "attention", "meaning"],
+    correct: 0,
+    explain: "Dựa vào nghĩa: 'proposal' (đề xuất) cho việc cắt giảm tiêu thụ năng lượng."
+  },
+  {
+    q: "111. Dr. Grayston ------ accepted the position of school superintendent.",
+    options: ["enthusiastically", "enthusiast", "enthusiastic", "enthusiasm"],
+    correct: 0,
+    explain: "Cần một trạng từ 'enthusiastically' (một cách nhiệt tình) để bổ nghĩa cho động từ 'accepted'."
+  },
+  {
+    q: "112. Austin Gallery is located at the northern end of Arch Street, ------ the Verdigris Bistro.",
+    options: ["opposite", "except", "across", "plus"],
+    correct: 0,
+    explain: "Dùng giới từ chỉ vị trí 'opposite' (đối diện) để mô tả địa điểm."
+  },
+  {
+    q: "113. Mr. Garcia promised ------ a mentor to Ms. Winston after he retired.",
+    options: ["to become", "became", "becoming", "had become"],
+    correct: 0,
+    explain: "Cấu trúc: 'promise to do something' (hứa làm gì đó)."
+  },
+  {
+    q: "114. Once considered a specialty product, shoes made from recycled materials are now ------ available.",
+    options: ["widely", "upward", "enough", "closely"],
+    correct: 0,
+    explain: "Cụm từ 'widely available' (có sẵn rộng rãi) là cách kết hợp từ phổ biến."
+  },
+  {
+    q: "115. Yuping University has formed ------ with local businesses to create internship opportunities for its students.",
+    options: ["partnerships", "partner", "partners", "partnering"],
+    correct: 0,
+    explain: "Dựa vào nghĩa và cấu trúc: 'form partnerships' (thiết lập quan hệ đối tác)."
+  },
+  {
+    q: "116. Our market research shows that buyers with limited ------ of a product often look for information from expert sources.",
+    options: ["knowledge", "approval", "perception", "consideration"],
+    correct: 0,
+    explain: "Cụm từ 'limited knowledge' (kiến thức hạn hẹp) phù hợp với ngữ cảnh tìm kiếm thông tin từ chuyên gia."
+  },
+  {
+    q: "117. ------ is preventing the graphic artists from accessing the image files in the main database.",
+    options: ["Something", "Many", "Other", "Whoever"],
+    correct: 0,
+    explain: "Dùng đại từ bất định 'Something' (điều gì đó) làm chủ ngữ cho động từ số ít 'is'."
+  },
+  {
+    q: "118. ------ a delay, Thaintec completed the renovation of its warehouse before the target date of April 7.",
+    options: ["Despite", "Although", "According to", "However"],
+    correct: 0,
+    explain: "Dùng 'Despite' + cụm danh từ để chỉ sự tương phản (Mặc dù có sự trì hoãn nhưng vẫn hoàn thành sớm)."
+  },
+  {
+    q: "119. While its credit card system is offline, the Lexler Department Store is ------ closed for business.",
+    options: ["effectively", "effect", "effecting", "effective"],
+    correct: 0,
+    explain: "Dùng trạng từ 'effectively' (về cơ bản/coi như là) để bổ nghĩa cho tính từ 'closed'."
+  },
+  {
+    q: "120. Nearly half of the toy manufacturers surveyed reported increased sales ------ the last two years.",
+    options: ["over", "onto", "under", "against"],
+    correct: 0,
+    explain: "Dùng 'over' + khoảng thời gian (over the last two years) để chỉ một quá trình diễn ra trong suốt 2 năm qua."
+  },
+{
+    q: "121. Nonprofit groups ------ up to three applications for funding consideration during any given calendar year.",
+    options: ["may submit", "be submitted", "submitting", "submits"],
+    correct: 0,
+    explain: "Dùng động từ khuyết thiếu 'may submit' (có thể nộp) để chỉ khả năng/quyền hạn của chủ ngữ số nhiều 'groups'."
+  },
+  {
+    q: "122. Critics reacted ------ to the new musical, praising the exciting design and impressive choreography.",
+    options: ["favorably", "intentionally", "uncertainly", "continuously"],
+    correct: 0,
+    explain: "Dựa vào cụm 'praising' (khen ngợi), chọn trạng từ 'favorably' (một cách thuận lợi/tích cực)."
+  },
+  {
+    q: "123. Clausen’s Notes is well-known ------ writers and publishers for its in-depth reviews of books.",
+    options: ["among", "owed to", "because", "in between"],
+    correct: 0,
+    explain: "Dùng giới từ 'among' (giữa/trong số) để chỉ đối tượng mà Clausen’s Notes được biết đến rộng rãi."
+  },
+  {
+    q: "124. The ongoing shortage of hardwood has caused the price of certain furniture items to ------.",
+    options: ["soar", "drain", "loop", "fling"],
+    correct: 0,
+    explain: "Dựa vào ngữ cảnh thiếu hụt hàng hóa (shortage), chọn 'soar' (tăng vọt) để mô tả giá cả."
+  },
+  {
+    q: "125. Attach the ------ tray to any flat steel surface for easy storage and access to household or automotive tools.",
+    options: ["magnetic", "magnetize", "magnets", "magnetically"],
+    correct: 0,
+    explain: "Cần một tính từ 'magnetic' (có tính từ tính/nam châm) để bổ nghĩa cho danh từ 'tray'."
+  },
+  {
+    q: "126. The customer ------ to buy an extended warranty on the dishwasher, so it is not eligible for a free repair.",
+    options: ["neglected", "rejected", "omitted", "dismissed"],
+    correct: 0,
+    explain: "Chọn 'neglected' (xao nhãng/bỏ qua) việc mua bảo hành. Lưu ý: 'rejected' thường đi trực tiếp với danh từ thay vì 'to V' trong ngữ cảnh này."
+  },
+  {
+    q: "127. Although much of the material appeared to remain ------ in nature, the audience remained attentive throughout Ms. Sharma’s presentation.",
+    options: ["technical", "engage", "engaged", "engagement"],
+    correct: 0,
+    explain: "Cần một tính từ sau động từ 'remain'. (Lưu ý: Câu hỏi gốc có chút lỗi đánh máy, 'technical' hoặc 'dry' thường dùng ở đây để tạo sự đối lập với 'attentive')."
+  },
+  {
+    q: "128. ------ fresh fruit and vegetables, vendors at the Wattville Farm Market also sell various handmade goods.",
+    options: ["In addition to", "Compared with", "Rather than", "As a result of"],
+    correct: 0,
+    explain: "Dùng 'In addition to' (Ngoài... ra) để bổ sung thêm mặt hàng handmade bên cạnh nông sản."
+  },
+  {
+    q: "129. ------ route they choose, it should take the management team approximately four hours to drive to the hotel in Antibes.",
+    options: ["Whichever", "What", "Some", "Somewhere"],
+    correct: 0,
+    explain: "Dùng đại từ quan hệ bất định 'Whichever' (Bất kể lộ trình nào) để chỉ sự lựa chọn không giới hạn."
+  },
+  {
+    q: "130. All Baraantec Ltd. hand tools undergo ------ inspections to ensure they are free of defects.",
+    options: ["rigorous", "negotiated", "returnable", "portable"],
+    correct: 0,
+    explain: "Cụm từ 'rigorous inspections' (kiểm tra nghiêm ngặt) là cách kết hợp từ chuyên dụng trong quản lý chất lượng."
+  },
+  ],
+/* TEST 3*/
+
+  3: [
+    { q: "301. Employees must arrive ------- time for meetings.",
+      options: ["in","at","on","to"], correct: 2 },
+  ],
+  4: [
+    { q: "401. The CEO ------- a new policy this week.",
+      options: ["announced","announcement","announce","announcing"], correct: 0 },
   ]
 };
 
-let currIndex = 0;
 
-// Load câu hỏi
-function loadQuestion(){
-  const box = document.getElementById("exercise");
-  if(currIndex >= exercises[1].length){
-    box.innerHTML = "<div style='font-size:24px; font-weight:bold;'>🎉 Bạn đã hoàn thành tất cả câu hỏi!</div>";
-    return;
-  }
-  const ex = exercises[1][currIndex];
-  let html = `
-    <div class="question-box">${ex.q}</div>
-    <textarea class="note-box" placeholder="Note:"></textarea>
-  `;
-  ex.options.forEach((opt,i)=>{
-    html += `
-      <div class="option-row">
-        <input type="radio" name="opt" id="opt${i}" value="${i}">
-        <label class="option-label" for="opt${i}">${String.fromCharCode(65+i)}. ${opt}</label>
-        <textarea class="option-note" placeholder=""></textarea>
-      </div>
-    `;
-  });
-  html += `<textarea class="note-box" placeholder="Note:"></textarea>`;
-  html += `
-    <div class="exercise-buttons">
-      <button onclick="checkAnswer()">Check</button>
-      <button onclick="nextQuestion()">Next</button>
-    </div>
-    <div id="result" class="result"></div>
-  `;
-  box.innerHTML = html;
-}
 
-// Check đáp án
-function checkAnswer(){
-  const ex = exercises[1][currIndex];
-  const radios = document.getElementsByName("opt");
-  let selected = -1;
-  radios.forEach(r=>{ if(r.checked) selected = parseInt(r.value); });
-  const resBox = document.getElementById("result");
-  if(selected===ex.correct){
-    resBox.style.color = "#28a745";
-    resBox.innerHTML = "✔ Correct";
-    fireConfetti();
-  } else {
-    resBox.style.color = "#C5705D";
-    resBox.innerHTML = `✘ Sai. Đáp án đúng: ${String.fromCharCode(65+ex.correct)}. ${ex.options[ex.correct]}<br>${ex.explain}`;
-  }
-}
 
-// Next
-function nextQuestion(){
-  currIndex++;
-  loadQuestion();
-}
 
-// Firework
-function firework(){
-  for(let i=0;i<25;i++){
-    const c=document.createElement("div");
-    c.className="confetti";
-    c.style.setProperty("--x",(Math.random()-.5)*600+"px");
-    c.style.setProperty("--y",(Math.random()-.5)*600+"px");
-    c.style.backgroundColor=`hsl(${Math.random()*360},90%,60%)`;
-    document.body.appendChild(c);
-    setTimeout(()=>c.remove(),900);
-  }
-}
-
-loadQuestion();
 </script>
 
+<script>
+// ===== 2. TIMER =====
+let timerInterval = null;
+let secondsPassed = 0;
+function formatTime(s) {
+  const h = Math.floor(s / 3600);
+  const m = Math.floor((s % 3600) / 60);
+  const sec = s % 60;
+  return [h,m,sec].map(v=>v.toString().padStart(2,'0')).join(':');
+}
+function startTimer(){ if(!timerInterval){ timerInterval=setInterval(()=>{secondsPassed++;document.getElementById("timer").textContent=formatTime(secondsPassed);},1000);} }
+function resetTimer(){ clearInterval(timerInterval); timerInterval=null; secondsPassed=0; document.getElementById("timer").textContent="00:00:00"; }
+function fireConfetti(){ confetti({ particleCount:200, spread:100, origin:{x:0.5,y:0.5} }); }
+</script>
+
+<script>
+// =================== GLOBAL ===================
+let currentIndex = 0;
+let currentTest = 1;
+
+// =================== LOAD TEST ===================
+function loadExercise(testNumber) {
+  currentTest = testNumber;
+  currentIndex = 0;
+  renderQuestion();
+}
+
+function renderQuestion() {
+  const area = document.getElementById("exercise");
+  const data = exercises[currentTest];
+  if (!data) {
+    area.innerHTML = "<p>Chưa có dữ liệu!</p>";
+    return;
+  }
+  const qObj = data[currentIndex];
+
+  let html = `
+    <div class="question-block">
+      <div class="question-box">${qObj.q}</div>
+      ${qObj.options.map((opt, i) => `
+        <div class="option-row">
+          <input type="radio" name="q" value="${i}" id="opt${i}">
+          <label for="opt${i}">${opt}</label>
+          <textarea class="note-small" placeholder="Ghi chú..."></textarea>
+        </div>
+      `).join("")}
+      <div class="result" id="result"></div>
+      <div class="exercise-buttons">
+        <button onclick="checkAnswer()">Check</button>
+        <button onclick="nextQuestion()">Next</button>
+      </div>
+    </div>
+  `;
+  area.innerHTML = html;
+}
+
+function checkAnswer() {
+  const data = exercises[currentTest];
+  const qObj = data[currentIndex];
+  const checked = document.querySelector(`input[name="q"]:checked`);
+  const resultDiv = document.getElementById(`result`);
+  if (!checked) {
+    resultDiv.textContent = "Chưa chọn đáp án!";
+    resultDiv.style.color = "orange";
+    return;
+  }
+  if (Number(checked.value) === qObj.correct) {
+    resultDiv.textContent = "Correct!";
+    resultDiv.style.color = "green";
+    fireConfetti();
+  } else {
+    resultDiv.textContent = "Incorrect! → " + qObj.explain;
+    resultDiv.style.color = "red";
+  }
+}
+
+function nextQuestion() {
+  const data = exercises[currentTest];
+  currentIndex++;
+  if (currentIndex >= data.length) {
+    document.getElementById("exercise").innerHTML =
+      `<p>🎉 Hết câu trong bộ này rồi! Chọn Test khác</p>`;
+    return;
+  }
+  renderQuestion();
+}
+
+// ===== FIRST LOAD + LISTENER =====
+loadExercise(Number(document.getElementById("exerciseList").value));
+document.getElementById("exerciseList").addEventListener("change", function(){
+  loadExercise(Number(this.value));
+});
+</script>
 </body>
 </html>
