@@ -21,8 +21,17 @@ header {
   color: #7a4e3e;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+  position: relative;
 }
+
+.header-left {
+  position: absolute;
+  left: 20px;
+}
+
+
+
 .header-left a {
   display: flex;
   align-items: center;
@@ -58,6 +67,22 @@ select {
     width: 100%;
     margin: 20px auto;
     box-sizing: border-box;
+  }
+}
+@media (max-width: 600px) {
+  header {
+    flex-direction: column;
+    padding: 10px;
+  }
+
+  .header-left {
+    position: static;
+    margin-bottom: 6px;
+  }
+
+  .header-center {
+    text-align: center;
+    margin-top: 4px;
   }
 }
 
