@@ -47,17 +47,20 @@ select {
   background-color: #e3fdfd;
 }
 .exercise {
-  width: 100%;
+  width: 70%;
   margin: 20px auto;
   text-align: left;
   font-size: 22px;
-  box-sizing: border-box;
 }
 
-html, body {
-  max-width: 100%;
-  overflow-x: hidden;
+@media (max-width: 768px) {
+  .exercise {
+    width: 100%;
+    margin: 20px auto;
+    box-sizing: border-box;
+  }
 }
+
 
 .question-box {
   width: 100%;
