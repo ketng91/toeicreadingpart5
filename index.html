@@ -30,8 +30,6 @@ header {
   left: 20px;
 }
 
-
-
 .header-left a {
   display: flex;
   align-items: center;
@@ -42,6 +40,7 @@ header {
 }
 .header-left a i { font-size: 18px; }
 .header-center { font-size: 22px; font-weight: bold; }
+
 .top-select {
   display: flex;
   justify-content: flex-start;
@@ -55,6 +54,23 @@ select {
   border: 2px solid #a0e7e5;
   background-color: #e3fdfd;
 }
+
+#timerBox {
+  margin: -10px auto 5px auto;
+  font-size: 24px;
+  text-align: center;
+}
+#timerBox button {
+  margin-left: 10px;
+  padding: 6px 12px;
+  font-size: 18px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  background-color: #a0e7e5;
+}
+#timerBox button:hover { background-color: #ffb3ba; }
+
 .exercise {
   width: 70%;
   margin: 20px auto;
@@ -86,7 +102,6 @@ select {
   }
 }
 
-
 .question-box {
   width: 100%;
   min-height: 60px;
@@ -95,18 +110,18 @@ select {
   padding: 10px;
   margin: 10px 0;
   font-size: 24px;
- font-weight: bold;
+  font-weight: bold;
   background-color: #e3fdfd;
   resize: vertical;
 }
 .note-box {
   width: 100%;
-  min-height: 50px; /* giữ box lớn cho ghi chú */
+  min-height: 50px;
   border-radius: 8px;
   padding: 10px;
   margin: 10px 0;
   font-size: 20px;
-font-family: 'Arial', sans-serif;  /* đổi font chữ */
+  font-family: 'Arial', sans-serif;
   color: #FF0000;
   background-color: #D9E9CF;
   resize: vertical;
@@ -127,7 +142,7 @@ font-family: 'Arial', sans-serif;  /* đổi font chữ */
 .option-note {
   flex: 1;
   margin-left: 15px;
-  min-height: 20px;  /* giảm chiều cao cho box nhỏ */
+  min-height: 20px;
   max-height: 30px;
   border: 1px solid #a0e7e5;
   border-radius: 6px;
@@ -135,9 +150,10 @@ font-family: 'Arial', sans-serif;  /* đổi font chữ */
   color: #4B70F5;
   background-color: #F1F3E0;
   font-size: 20px;
-  font-family: 'Arial', sans-serif;  /* đổi font chữ */
+  font-family: 'Arial', sans-serif;
   resize: vertical;
 }
+
 .exercise-buttons {
   margin-top: 15px;
 }
@@ -157,20 +173,6 @@ font-family: 'Arial', sans-serif;  /* đổi font chữ */
   font-size: 20px;
   margin-top: 10px;
 }
-.confetti {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  width: 10px;
-  height: 10px;
-  opacity: .9;
-  animation: pop .9s ease-out forwards;
-}
-@keyframes pop {
-  0% { transform: translate(0,0) scale(1); opacity:1;}
-  50% {transform: translate(calc(var(--x)*.5),calc(var(--y)*.4)) scale(1.1);opacity:1;}
-  100% {transform: translate(var(--x),var(--y)) scale(.5);opacity:0;}
-}
 </style>
 </head>
 <body>
@@ -186,21 +188,69 @@ font-family: 'Arial', sans-serif;  /* đổi font chữ */
 
 <div class="top-select">
   <select id="exerciseList">
-    <option value="1">TOEIC Part 5 - Test 1</option> /*là test 10*/
-    <option value="1">TOEIC Part 5 - Test 2</option>
-    <option value="1">TOEIC Part 5 - Test 3</option>
-    <option value="1">TOEIC Part 5 - Test 4</option>
-    <option value="1">TOEIC Part 5 - Test 5</option>
-    <option value="1">TOEIC Part 5 - Test 6</option>
-    <option value="1">TOEIC Part 5 - Test 7</option>
-    <option value="1">TOEIC Part 5 - Test 8</option>
-    <option value="1">TOEIC Part 5 - Test 9</option>
-    <option value="1">TOEIC Part 5 - Test 10</option>
-
+    <option>TOEIC Part 5 - Test 1</option>
+    <option>TOEIC Part 5 - Test 2</option>
+    <option>TOEIC Part 5 - Test 3</option>
+    <option>TOEIC Part 5 - Test 4</option>
+    <option>TOEIC Part 5 - Test 5</option>
+    <option>TOEIC Part 5 - Test 6</option>
+    <option>TOEIC Part 5 - Test 7</option>
+    <option>TOEIC Part 5 - Test 8</option>
+    <option>TOEIC Part 5 - Test 9</option>
+    <option>TOEIC Part 5 - Test 10</option>
   </select>
 </div>
 
+<!-- ĐỒNG HỒ -->
+<div id="timerBox">
+  <span id="timer">00:00:00</span>
+  <button onclick="startTimer()">Start</button>
+  <button onclick="resetTimer()">Reset</button>
+</div>
+
 <div class="exercise" id="exercise"></div>
+
+<footer>Chăm chỉ thì đậu!</footer>
+
+<script>
+// TIMER
+let timerInterval = null;
+let secondsPassed = 0;
+
+function formatTime(s) {
+  const h = Math.floor(s / 3600);
+  const m = Math.floor((s % 3600) / 60);
+  const sec = s % 60;
+  return [
+    h.toString().padStart(2,'0'),
+    m.toString().padStart(2,'0'),
+    sec.toString().padStart(2,'0')
+  ].join(':');
+}
+
+function startTimer() {
+  if (timerInterval) return;
+  timerInterval = setInterval(() => {
+    secondsPassed++;
+    document.getElementById("timer").textContent = formatTime(secondsPassed);
+  }, 1000);
+}
+
+function resetTimer() {
+  clearInterval(timerInterval);
+  timerInterval = null;
+  secondsPassed = 0;
+  document.getElementById("timer").textContent = "00:00:00";
+}
+
+// TODO: Câu hỏi sẽ load ở đây
+document.getElementById("exercise").innerHTML =
+  "<p style='text-align:center;color:#888'>Hệ thống câu hỏi ở đây...</p>";
+
+</script>
+
+</body>
+</html>
 
 <footer>Chăm chỉ thì đậu!</footer>
 
